@@ -3,9 +3,6 @@ import pickle
 import os
 import pandas as pd
 
-
-
-
 if __name__ == '__main__':
 
     val_data = pd.read_csv('data/numerai_tournament_data.csv')
@@ -25,7 +22,5 @@ if __name__ == '__main__':
     probs = np.power(np.prod(predictions.values, axis=0),
                      1.0 / predictions.shape[0])
 
-
-
-    submit = pd.DataFrame({'id':val_data.id, 'probability': probs.flatten()})
+    submit = pd.DataFrame({'id': val_data.id, 'probability': probs.flatten()})
     submit.to_csv('./submissions/submit.csv', index=False)
